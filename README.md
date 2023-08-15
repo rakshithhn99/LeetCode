@@ -1,2 +1,2 @@
 # LeetCode
-Repository keep track and maintain all leetcode solutions at one place
+Repository to keep track and maintain all leetcode solutions at one place
