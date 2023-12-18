@@ -1,8 +1,11 @@
 # Write your MySQL query statement below
 
-SELECT 
-IFNULL((SELECT DISTINCT salary FROM Employee
-ORDER BY salary DESC
-LIMIT 1 OFFSET 1), NULL) AS SecondHighestSalary;
+WITH CTE AS (
+    SELECT 
+    SALARY, 
+    DENSE_RANK() OVER(ORDER BY SALARY DESC) AS RN
+    FROM Employee
+)
 
-
+SELECT
+IFNULL((SELECT SALARY FROM CTE WHERE RN=2 LIMIT 1), NULL) AS SecondHighestSalary;
