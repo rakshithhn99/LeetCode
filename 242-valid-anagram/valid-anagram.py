@@ -1,25 +1,18 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        ds = {}
-        dt = {}
-        for i in s:
-            if ds.get(i) is None:
-                ds[i] = 1
-            else:
-                ds[i] = ds[i]+1
+       freq1 = [0] * 26 
+       freq2 = [0] * 26 
 
+       for i in s:
+           freq1[ord(i) - ord('a')]+=1 
+           
+       for i in t:
+            freq2[ord(i) - ord('a')]+=1 
         
-        for i in t:
-            if dt.get(i) is None:
-                dt[i] = 1
-            else:
-             dt[i]=dt[i]+1 
-        
-        print(ds)
-        print(dt)
-        if ds == dt:
+       if freq1 == freq2:
             return True 
         
-        return False
+       return False
+
 
         
